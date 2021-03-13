@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^0.19.3
+  shimmer: ^1.1.2
 
 dev_dependencies:
   flutter_test:

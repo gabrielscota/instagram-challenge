@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Storie extends StatelessWidget {
-  final Image image;
+import '../../../../constants.dart';
 
-  const Storie({@required this.image});
+class Storie extends StatelessWidget {
+  final StorieEntity storieEntity;
+  final bool isFirst;
+
+  const Storie({@required this.storieEntity, @required this.isFirst});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,7 @@ class Storie extends StatelessWidget {
             ),
             padding: const EdgeInsets.all(2.0),
             child: CircleAvatar(
-              child: image,
+              child: Image.asset(storieEntity.user.userPhoto),
               radius: 28,
             ),
           ),
@@ -39,8 +42,8 @@ class Storie extends StatelessWidget {
           width: 64,
           padding: const EdgeInsets.symmetric(vertical: 4.0),
           child: Text(
-            'gabriel',
-            style: Theme.of(context).textTheme.caption.copyWith(
+            (isFirst ? 'Seu story' : storieEntity.user.username),
+            style: Theme.of(context).textTheme.caption?.copyWith(
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).primaryColor,
                 ),

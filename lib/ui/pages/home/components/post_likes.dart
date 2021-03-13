@@ -1,47 +1,73 @@
 import 'package:flutter/material.dart';
 
-void showPostLikes(BuildContext context) {
+import '../../../../constants.dart';
+
+void showPostLikes(BuildContext context, List<UserEntity> likes) {
+  final ScrollController scrollController = ScrollController();
+  bool dispose = false;
+
+  scrollController.addListener(() {
+    if (scrollController.offset <= -40 && dispose == false) {
+      Navigator.of(context).pop();
+      dispose = true;
+    }
+  });
+
   showModalBottomSheet(
-    context: context,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
-    ),
-    builder: (context) => Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          width: 64,
-          height: 8,
-          margin: const EdgeInsets.only(top: 12.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5.0),
-            color: Theme.of(context).primaryColor.withOpacity(0.1),
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
+      ),
+      isScrollControlled: true,
+      enableDrag: true,
+      builder: (context) {
+        return ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.7,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: Text(
-            'Curtidas',
-            style: Theme.of(context)
-                .textTheme
-                .headline5
-                .copyWith(fontWeight: FontWeight.w500),
+          child: SingleChildScrollView(
+            controller: scrollController,
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 64,
+                  height: 8,
+                  margin: const EdgeInsets.only(top: 12.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Text(
+                    'Curtidas',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline5
+                        ?.copyWith(fontWeight: FontWeight.w500),
+                  ),
+                ),
+                ListView.builder(
+                  itemCount: likes.length,
+                  itemBuilder: (context, index) => UserLiked(
+                    userPhoto: Image.asset(likes[index].userPhoto).image,
+                    username: likes[index].username,
+                    name: likes[index].name,
+                  ),
+                  physics: BouncingScrollPhysics(),
+                  primary: true,
+                  shrinkWrap: true,
+                ),
+                // const SizedBox(height: 16.0),
+              ],
+            ),
           ),
-        ),
-        UserLiked(
-          userPhoto: Image.asset('lib/ui/assets/images/avatar-1.png').image,
-          username: 'alexis',
-          name: 'Alexis Scott',
-        ),
-        UserLiked(
-          userPhoto: Image.asset('lib/ui/assets/images/avatar-2.png').image,
-          username: 'brian',
-          name: 'Brian Spil',
-        ),
-        const SizedBox(height: 16.0),
-      ],
-    ),
-  );
+        );
+      });
 }
 
 class UserLiked extends StatelessWidget {
@@ -49,7 +75,11 @@ class UserLiked extends StatelessWidget {
   final String username;
   final String name;
 
-  const UserLiked({this.userPhoto, this.username, this.name});
+  const UserLiked({
+    @required this.userPhoto,
+    @required this.username,
+    @required this.name,
+  });
 
   @override
   Widget build(BuildContext context) {
