@@ -27,6 +27,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
@@ -65,6 +66,7 @@ class HomePage extends StatelessWidget {
               Container(
                 alignment: Alignment.center,
                 height: 100,
+                margin: const EdgeInsets.only(bottom: 8.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.vertical(
@@ -103,54 +105,57 @@ class HomePage extends StatelessWidget {
 class Post extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20.0, 16.0, 20.0, 0.0),
-      child: Container(
-        height: 400,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16.0),
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).primaryColor.withOpacity(0.05),
-              offset: Offset(4.0, 4.0),
-              blurRadius: 6.0,
-            ),
-          ],
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    child: Text('G'),
-                    radius: 20,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('gabrielscota'),
-                          Text('Ouro Preto'),
-                        ],
+    return Container(
+      color: Theme.of(context).backgroundColor,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20.0, 16.0, 20.0, 16.0),
+        child: Container(
+          height: 400,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16.0),
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(context).primaryColor.withOpacity(0.05),
+                offset: Offset(4.0, 4.0),
+                blurRadius: 6.0,
+              ),
+            ],
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      child: Text('G'),
+                      radius: 20,
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('gabrielscota'),
+                            Text('Ouro Preto'),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SvgPicture.asset(
-                    'lib/ui/assets/icons/more-square.svg',
-                    width: 28,
-                    height: 28,
-                    color: Theme.of(context).primaryColor,
-                  )
-                ],
+                    SvgPicture.asset(
+                      'lib/ui/assets/icons/more-square.svg',
+                      width: 28,
+                      height: 28,
+                      color: Theme.of(context).primaryColor,
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

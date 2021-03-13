@@ -23,6 +23,7 @@ flutter:
   assets:
     - lib/ui/assets/fonts/
     - lib/ui/assets/icons/
+    - lib/ui/assets/images/
 
   fonts:
     - family: Quicksand
