@@ -150,4 +150,61 @@ final posts = <PostEntity>[
       ),
     ],
   ),
+  PostEntity(
+    user: UserEntity(
+      username: 'brian',
+      userPhoto: 'lib/ui/assets/images/avatar-3.png',
+      name: 'Brian Spilber',
+    ),
+    subtitle: 'Timóteo',
+    imageUrl: 'lib/ui/assets/images/post-1.jpg',
+    likes: [
+      UserEntity(
+        username: 'gabrielscota',
+        userPhoto: 'lib/ui/assets/images/avatar-0.png',
+        name: 'Gabriel Scotá',
+      ),
+      UserEntity(
+        username: 'anna',
+        userPhoto: 'lib/ui/assets/images/avatar-6.png',
+        name: 'Anna Timber',
+      ),
+      UserEntity(
+        username: 'julia',
+        userPhoto: 'lib/ui/assets/images/avatar-4.png',
+        name: 'Julia Grewn',
+      ),
+      UserEntity(
+        username: 'marcus',
+        userPhoto: 'lib/ui/assets/images/avatar-2.png',
+        name: 'Marcus Conner',
+      ),
+    ],
+  ),
+  PostEntity(
+    user: UserEntity(
+      username: 'anna',
+      userPhoto: 'lib/ui/assets/images/avatar-6.png',
+      name: 'Anna Timber',
+    ),
+    subtitle: 'EUA',
+    imageUrl: 'lib/ui/assets/images/post-3.jpg',
+    likes: [
+      UserEntity(
+        username: 'marcus',
+        userPhoto: 'lib/ui/assets/images/avatar-2.png',
+        name: 'Marcus Conner',
+      ),
+      UserEntity(
+        username: 'jessica',
+        userPhoto: 'lib/ui/assets/images/avatar-5.png',
+        name: 'Jessica Owen',
+      ),
+      UserEntity(
+        username: 'brian',
+        userPhoto: 'lib/ui/assets/images/avatar-3.png',
+        name: 'Brian Spilber',
+      ),
+    ],
+  ),
 ];
