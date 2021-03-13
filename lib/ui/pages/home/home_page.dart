@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
-                height: 100,
+                height: 120,
                 margin: const EdgeInsets.only(bottom: 8.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -45,6 +45,7 @@ class HomePage extends StatelessWidget {
               Post(),
               Post(),
               Post(),
+              const SizedBox(height: 32.0),
             ],
           ),
         ),
