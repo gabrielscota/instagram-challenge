@@ -60,6 +60,7 @@ class Stories extends StatelessWidget {
           if (index == 0) {
             return Storie(
               storieEntity: StorieEntity(
+                id: '0',
                 user: loggedUser,
               ),
               isFirst: true,
