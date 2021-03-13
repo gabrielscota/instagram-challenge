@@ -142,10 +142,10 @@ class Post extends StatelessWidget {
                           children: [
                             Text(
                               'Curtido por ',
-                              style: Theme.of(context).textTheme.bodyText2
-                                ..copyWith(
-                                  letterSpacing: 0.1,
-                                ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  .copyWith(letterSpacing: 0.1),
                             ),
                             InkWell(
                               child: Text(
@@ -155,10 +155,10 @@ class Post extends StatelessWidget {
                             ),
                             Text(
                               ' e ',
-                              style: Theme.of(context).textTheme.bodyText2
-                                ..copyWith(
-                                  letterSpacing: 0.1,
-                                ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  .copyWith(letterSpacing: 0.1),
                             ),
                             InkWell(
                               onTap: () => showPostLikes(context),

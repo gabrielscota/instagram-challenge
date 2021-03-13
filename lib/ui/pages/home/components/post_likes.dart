@@ -22,17 +22,21 @@ void showPostLikes(BuildContext context) {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Text(
             'Curtidas',
-            style: Theme.of(context).textTheme.headline5,
+            style: Theme.of(context)
+                .textTheme
+                .headline5
+                .copyWith(fontWeight: FontWeight.w500),
           ),
         ),
         UserLiked(
           userPhoto: Image.asset('lib/ui/assets/images/avatar-1.png').image,
           username: 'alexis',
-          description: 'Brasil',
+          name: 'Alexis Scott',
         ),
         UserLiked(
           userPhoto: Image.asset('lib/ui/assets/images/avatar-2.png').image,
           username: 'brian',
+          name: 'Brian Spil',
         ),
         const SizedBox(height: 16.0),
       ],
@@ -43,9 +47,9 @@ void showPostLikes(BuildContext context) {
 class UserLiked extends StatelessWidget {
   final ImageProvider userPhoto;
   final String username;
-  final String description;
+  final String name;
 
-  const UserLiked({this.userPhoto, this.username, this.description});
+  const UserLiked({this.userPhoto, this.username, this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +67,14 @@ class UserLiked extends StatelessWidget {
               padding: const EdgeInsets.only(left: 8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     username,
                     style: Theme.of(context).textTheme.subtitle2,
                   ),
                   Text(
-                    description != null ? description : '',
+                    name,
                     style: Theme.of(context).textTheme.caption,
                   ),
                 ],

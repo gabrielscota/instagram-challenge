@@ -8,9 +8,9 @@ AppBar makeAppBar(BuildContext context) {
     centerTitle: true,
     title: Text(
       'Instagram',
-      style: TextStyle(
-        color: Theme.of(context).primaryColor,
-      ),
+      style: Theme.of(context).textTheme.headline5.copyWith(
+            fontWeight: FontWeight.w500,
+          ),
     ),
     leadingWidth: 48,
     leading: Padding(
