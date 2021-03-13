@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './components.dart';
+
 ThemeData makeAppTheme() {
   const Color backgroundColor = Color.fromRGBO(252, 252, 252, 1.0);
   const Color primaryColor = Color.fromRGBO(69, 69, 69, 1.0);
@@ -77,5 +79,6 @@ ThemeData makeAppTheme() {
     primaryColor: primaryColor,
     fontFamily: 'Quicksand',
     textTheme: textTheme,
+    primarySwatch: generateMaterialColor(primaryColor),
   );
 }
