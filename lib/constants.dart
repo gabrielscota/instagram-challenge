@@ -1,36 +1,4 @@
-import 'package:meta/meta.dart';
-
-class UserEntity {
-  final String username;
-  final String userPhoto;
-  final String name;
-
-  const UserEntity({
-    @required this.username,
-    @required this.userPhoto,
-    @required this.name,
-  });
-}
-
-class StorieEntity {
-  final UserEntity user;
-
-  const StorieEntity({@required this.user});
-}
-
-class PostEntity {
-  final UserEntity user;
-  final String subtitle;
-  final String imageUrl;
-  var likes = <UserEntity>[];
-
-  PostEntity({
-    @required this.user,
-    this.subtitle = '',
-    @required this.imageUrl,
-    @required this.likes,
-  });
-}
+import 'domain/entities/entities.dart';
 
 final UserEntity loggedUser = UserEntity(
   username: 'gabrielscota',

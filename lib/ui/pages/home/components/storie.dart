@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../constants.dart';
+import '../../../../domain/entities/entities.dart';
 
 class Storie extends StatelessWidget {
   final StorieEntity storieEntity;

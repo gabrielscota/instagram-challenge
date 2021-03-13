@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'dart:ui' as ui;
 
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:instagram_challenge/constants.dart';
+import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../domain/entities/entities.dart';
 import './components.dart';
 
 class Post extends StatefulWidget {

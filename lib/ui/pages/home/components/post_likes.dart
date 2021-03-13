@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../constants.dart';
+import '../../../../domain/entities/entities.dart';
 
 void showPostLikes(BuildContext context, List<UserEntity> likes) {
   final ScrollController scrollController = ScrollController();
