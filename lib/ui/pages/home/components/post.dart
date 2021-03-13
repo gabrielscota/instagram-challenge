@@ -128,16 +128,18 @@ class _PostState extends State<Post> {
                       ),
                     );
                   }
-                  return Shimmer.fromColors(
-                    baseColor: Colors.grey[200],
-                    highlightColor: Colors.grey[50],
-                    child: Container(
-                      height: 320,
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(16.0),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.grey[200],
+                      highlightColor: Colors.grey[50],
+                      child: Container(
+                        height: 320,
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
                       ),
                     ),
                   );
