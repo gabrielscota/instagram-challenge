@@ -81,13 +81,14 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 child: ListView.separated(
-                  itemCount: 10,
-                  itemBuilder: (context, index) => CircleAvatar(
-                    child: Text(index.toString()),
+                  itemCount: 7,
+                  itemBuilder: (context, index) => Storie(
+                    image:
+                        Image.asset('lib/ui/assets/images/avatar-$index.png'),
                   ),
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  separatorBuilder: (context, index) => SizedBox(width: 8.0),
+                  separatorBuilder: (context, index) => SizedBox(width: 12.0),
                   physics: BouncingScrollPhysics(),
                 ),
               ),
@@ -102,6 +103,59 @@ class HomePage extends StatelessWidget {
   }
 }
 
+class Storie extends StatelessWidget {
+  final Image image;
+
+  const Storie({@required this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(32.0),
+            gradient: LinearGradient(
+              colors: [
+                Colors.red,
+                Colors.orange,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          padding: const EdgeInsets.all(2.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(32.0),
+            ),
+            padding: const EdgeInsets.all(2.0),
+            child: CircleAvatar(
+              child: image,
+              radius: 28,
+            ),
+          ),
+        ),
+        Container(
+          width: 64,
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: Text(
+            'gabriel',
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).primaryColor,
+                ),
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class Post extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -110,7 +164,7 @@ class Post extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20.0, 16.0, 20.0, 16.0),
         child: Container(
-          height: 400,
+          height: 420,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16.0),
@@ -123,6 +177,7 @@ class Post extends StatelessWidget {
             ],
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -130,7 +185,9 @@ class Post extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CircleAvatar(
-                      child: Text('G'),
+                      backgroundImage:
+                          Image.asset('lib/ui/assets/images/avatar-0.png')
+                              .image,
                       radius: 20,
                     ),
                     Expanded(
@@ -139,8 +196,14 @@ class Post extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('gabrielscota'),
-                            Text('Ouro Preto'),
+                            Text(
+                              'gabrielscota',
+                              style: Theme.of(context).textTheme.subtitle2,
+                            ),
+                            Text(
+                              'Ouro Preto',
+                              style: Theme.of(context).textTheme.caption,
+                            ),
                           ],
                         ),
                       ),
@@ -150,7 +213,58 @@ class Post extends StatelessWidget {
                       width: 28,
                       height: 28,
                       color: Theme.of(context).primaryColor,
-                    )
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Image.asset(
+                  'lib/ui/assets/images/post-0.png',
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12.0, 2.0, 12.0, 12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          'lib/ui/assets/icons/heart.svg',
+                          width: 28,
+                          height: 28,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        const SizedBox(width: 12.0),
+                        SvgPicture.asset(
+                          'lib/ui/assets/icons/chat.svg',
+                          width: 28,
+                          height: 28,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        const SizedBox(width: 12.0),
+                        SvgPicture.asset(
+                          'lib/ui/assets/icons/send.svg',
+                          width: 28,
+                          height: 28,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        const SizedBox(width: 12.0),
+                        Spacer(),
+                        SvgPicture.asset(
+                          'lib/ui/assets/icons/bookmark.svg',
+                          width: 28,
+                          height: 28,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8.0),
+                    Row(
+                      children: [Text('Curtido por ...')],
+                    ),
                   ],
                 ),
               ),
