@@ -76,9 +76,9 @@ class UserLiked extends StatelessWidget {
   final String name;
 
   const UserLiked({
-    @required this.userPhoto,
-    @required this.username,
-    @required this.name,
+    required this.userPhoto,
+    required this.username,
+    required this.name,
   });
 
   @override

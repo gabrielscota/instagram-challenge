@@ -6,7 +6,7 @@ class Storie extends StatelessWidget {
   final StorieEntity storieEntity;
   final bool isFirst;
 
-  const Storie({@required this.storieEntity, @required this.isFirst});
+  const Storie({required this.storieEntity, required this.isFirst});
 
   @override
   Widget build(BuildContext context) {

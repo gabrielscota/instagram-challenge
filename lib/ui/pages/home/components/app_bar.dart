@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class HomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   final ScrollController scrollController;
 
-  const HomeAppBar({@required this.scrollController});
+  const HomeAppBar({required this.scrollController});
 
   @override
   _HomeAppBarState createState() => _HomeAppBarState();

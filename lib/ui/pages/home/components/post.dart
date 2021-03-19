@@ -11,14 +11,14 @@ import './components.dart';
 class Post extends StatefulWidget {
   final PostEntity postEntity;
 
-  const Post({@required this.postEntity});
+  const Post({required this.postEntity});
 
   @override
   _PostState createState() => _PostState();
 }
 
 class _PostState extends State<Post> {
-  ui.Image imageLoaded;
+  late ui.Image imageLoaded;
 
   Future<void> loadImage(String assetUrl) async {
     final Image image = Image(image: AssetImage(assetUrl));
@@ -130,8 +130,8 @@ class _PostState extends State<Post> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Shimmer.fromColors(
-                      baseColor: Colors.grey[200],
-                      highlightColor: Colors.grey[50],
+                      baseColor: Colors.grey[200]!,
+                      highlightColor: Colors.grey[50]!,
                       child: Container(
                         height: 320,
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
