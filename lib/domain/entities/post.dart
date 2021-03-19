@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 import './entities.dart';
 
 class PostEntity {
@@ -10,10 +8,10 @@ class PostEntity {
   var likes = <UserEntity>[];
 
   PostEntity({
-    @required this.id,
-    @required this.user,
+    required this.id,
+    required this.user,
     this.subtitle = '',
-    @required this.imageUrl,
-    @required this.likes,
+    required this.imageUrl,
+    required this.likes,
   });
 }

@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 class UserEntity {
   final String id;
   final String username;
@@ -7,9 +5,9 @@ class UserEntity {
   final String name;
 
   const UserEntity({
-    @required this.id,
-    @required this.username,
-    @required this.userPhoto,
-    @required this.name,
+    required this.id,
+    required this.username,
+    required this.userPhoto,
+    required this.name,
   });
 }
