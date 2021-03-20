@@ -22,12 +22,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: HomeAppBar(
-      //   scrollController: _scrollController,
-      //   pageController: _pageController,
-      // ),
       body: PageView(
         controller: _pageController,
+        allowImplicitScrolling: false,
+        pageSnapping: true,
+        physics: ClampingScrollPhysics(),
         children: [
           Container(color: Colors.green),
           Stack(
