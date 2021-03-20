@@ -2,18 +2,42 @@ import 'package:flutter/material.dart';
 
 import './components/components.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
+
+  PageController? _pageController;
+
+  @override
+  void initState() {
+    _pageController = PageController(initialPage: 1);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: HomeAppBar(scrollController: _scrollController),
-      body: Stack(
+      // appBar: HomeAppBar(
+      //   scrollController: _scrollController,
+      //   pageController: _pageController,
+      // ),
+      body: PageView(
+        controller: _pageController,
         children: [
-          Feed(scrollController: _scrollController),
-          BottomNavigation(),
+          Container(color: Colors.green),
+          Stack(
+            children: [
+              Feed(scrollController: _scrollController),
+              HomeAppBar(scrollController: _scrollController),
+              BottomNavigation(),
+            ],
+          ),
+          Container(color: Colors.red),
         ],
       ),
     );

@@ -13,19 +13,22 @@ class Feed extends StatelessWidget {
     return SingleChildScrollView(
       controller: scrollController,
       physics: BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          Stories(),
-          ListView.builder(
-            itemCount: posts.length,
-            itemBuilder: (context, index) => Post(
-              postEntity: posts[index],
+      child: Padding(
+        padding: const EdgeInsets.only(top: 64.0),
+        child: Column(
+          children: [
+            Stories(),
+            ListView.builder(
+              itemCount: posts.length,
+              itemBuilder: (context, index) => Post(
+                postEntity: posts[index],
+              ),
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
             ),
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-          ),
-          const SizedBox(height: 32.0),
-        ],
+            Container(height: 110.0, color: Theme.of(context).backgroundColor),
+          ],
+        ),
       ),
     );
   }
