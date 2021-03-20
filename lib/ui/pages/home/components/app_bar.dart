@@ -52,7 +52,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
       leading: Padding(
         padding: const EdgeInsets.only(left: 16.0),
         child: SvgPicture.asset(
-          'lib/ui/assets/icons/camera.svg',
+          'lib/ui/assets/icons/broken/camera.svg',
           color: Theme.of(context).primaryColor,
         ),
       ),
@@ -60,7 +60,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
         Padding(
           padding: const EdgeInsets.only(right: 16.0),
           child: SvgPicture.asset(
-            'lib/ui/assets/icons/send.svg',
+            'lib/ui/assets/icons/broken/send.svg',
             width: 32,
             height: 32,
             color: Theme.of(context).primaryColor,
@@ -69,37 +69,4 @@ class _HomeAppBarState extends State<HomeAppBar> {
       ],
     );
   }
-}
-
-AppBar makeAppBar(BuildContext context, bool isElevated) {
-  return AppBar(
-    backgroundColor: Colors.white,
-    elevation: isElevated ? 2.0 : 0.0,
-    centerTitle: true,
-    title: Text(
-      'Instagram',
-      style: Theme.of(context).textTheme.headline5?.copyWith(
-            fontWeight: FontWeight.w500,
-          ),
-    ),
-    leadingWidth: 48,
-    leading: Padding(
-      padding: const EdgeInsets.only(left: 16.0),
-      child: SvgPicture.asset(
-        'lib/ui/assets/icons/camera.svg',
-        color: Theme.of(context).primaryColor,
-      ),
-    ),
-    actions: [
-      Padding(
-        padding: const EdgeInsets.only(right: 16.0),
-        child: SvgPicture.asset(
-          'lib/ui/assets/icons/send.svg',
-          width: 32,
-          height: 32,
-          color: Theme.of(context).primaryColor,
-        ),
-      ),
-    ],
-  );
 }

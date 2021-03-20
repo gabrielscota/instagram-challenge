@@ -21,28 +21,28 @@ class BottomNavigation extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             NavigationItem(
-              enabledIcon: 'lib/ui/assets/icons/home.svg',
-              disabledIcon: 'lib/ui/assets/icons/home.svg',
+              enabledIcon: 'lib/ui/assets/icons/bold/home.svg',
+              disabledIcon: 'lib/ui/assets/icons/broken/home.svg',
               isActive: true,
             ),
             NavigationItem(
-              enabledIcon: 'lib/ui/assets/icons/search.svg',
-              disabledIcon: 'lib/ui/assets/icons/search.svg',
+              enabledIcon: 'lib/ui/assets/icons/bold/search.svg',
+              disabledIcon: 'lib/ui/assets/icons/broken/search.svg',
               isActive: false,
             ),
             NavigationItem(
-              enabledIcon: 'lib/ui/assets/icons/plus.svg',
-              disabledIcon: 'lib/ui/assets/icons/plus.svg',
+              enabledIcon: 'lib/ui/assets/icons/bold/plus.svg',
+              disabledIcon: 'lib/ui/assets/icons/broken/plus.svg',
               isActive: false,
             ),
             NavigationItem(
-              enabledIcon: 'lib/ui/assets/icons/heart.svg',
-              disabledIcon: 'lib/ui/assets/icons/heart.svg',
+              enabledIcon: 'lib/ui/assets/icons/bold/heart.svg',
+              disabledIcon: 'lib/ui/assets/icons/broken/heart.svg',
               isActive: false,
             ),
             NavigationItem(
-              enabledIcon: 'lib/ui/assets/icons/profile.svg',
-              disabledIcon: 'lib/ui/assets/icons/profile.svg',
+              enabledIcon: 'lib/ui/assets/icons/bold/profile.svg',
+              disabledIcon: 'lib/ui/assets/icons/broken/profile.svg',
               isActive: false,
             ),
           ],

@@ -91,7 +91,7 @@ class _PostState extends State<Post> {
                       ),
                     ),
                     SvgPicture.asset(
-                      'lib/ui/assets/icons/more-square.svg',
+                      'lib/ui/assets/icons/broken/more-square.svg',
                       width: 28,
                       height: 28,
                       color: Theme.of(context).primaryColor,
@@ -152,21 +152,21 @@ class _PostState extends State<Post> {
                     Row(
                       children: [
                         SvgPicture.asset(
-                          'lib/ui/assets/icons/heart.svg',
+                          'lib/ui/assets/icons/broken/heart.svg',
                           width: 28,
                           height: 28,
                           color: Theme.of(context).primaryColor,
                         ),
                         const SizedBox(width: 12.0),
                         SvgPicture.asset(
-                          'lib/ui/assets/icons/chat.svg',
+                          'lib/ui/assets/icons/broken/chat.svg',
                           width: 28,
                           height: 28,
                           color: Theme.of(context).primaryColor,
                         ),
                         const SizedBox(width: 12.0),
                         SvgPicture.asset(
-                          'lib/ui/assets/icons/send.svg',
+                          'lib/ui/assets/icons/broken/send.svg',
                           width: 28,
                           height: 28,
                           color: Theme.of(context).primaryColor,
@@ -174,7 +174,7 @@ class _PostState extends State<Post> {
                         const SizedBox(width: 12.0),
                         Spacer(),
                         SvgPicture.asset(
-                          'lib/ui/assets/icons/bookmark.svg',
+                          'lib/ui/assets/icons/broken/bookmark.svg',
                           width: 28,
                           height: 28,
                           color: Theme.of(context).primaryColor,
