@@ -4,5 +4,5 @@ import '../../../data/firebase/firebase.dart';
 import '../../../infra/firebase/firebase.dart';
 
 CloudFirestore makeCloudFirestore() => FirestoreAdapter(
-      firestore: FirebaseFirestore.instance,
+      firebaseFirestore: FirebaseFirestore.instance,
     );
