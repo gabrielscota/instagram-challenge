@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import '../ui/components/components.dart';
 import './factories/factories.dart';
@@ -10,6 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await initMessaging();
+  Provider.debugCheckInvalidValueType = null;
   runApp(MyApp());
 }
 
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/login',
-          page: makeHomePage,
+          page: makeLoginPage,
           transition: Transition.fadeIn,
         ),
         GetPage(
