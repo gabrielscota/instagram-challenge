@@ -10,11 +10,19 @@ class GetxHomePresenter extends GetxController implements HomePresenter {
 
   GetxHomePresenter({required this.loadPosts, required this.loadCurrentUser});
 
+  final _user = Rx<UserViewModel?>();
+  Stream<UserViewModel?> get userStream => _user.stream;
+
   @override
   Future<void> loadPostsData(String userUID) async {
     try {
       final UserEntity user = await loadCurrentUser.load(userUID);
-      await loadPosts.load(user.uid);
+      _user.value = UserViewModel(
+        uid: user.uid,
+        username: user.username,
+        avatar: user.avatar,
+        name: user.name,
+      );
     } catch (_) {}
   }
 }
