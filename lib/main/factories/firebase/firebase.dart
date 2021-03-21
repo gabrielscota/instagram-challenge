@@ -1,2 +1,2 @@
 export './messaging.dart';
-export './firestore.dart';
+export './firestore_adapter_factory.dart';
