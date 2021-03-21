@@ -1,17 +1,25 @@
 import './entities.dart';
 
 class PostEntity {
-  final String id;
+  final String uid;
   final UserEntity user;
   final String subtitle;
   final String imageUrl;
-  var likes = <UserEntity>[];
+  final String description;
+  var likes = <UserLikeEntity>[];
+  final String createdAt;
+  final String updatedAt;
+  final String deletedAt;
 
   PostEntity({
-    required this.id,
+    required this.uid,
     required this.user,
-    this.subtitle = '',
+    required this.subtitle,
     required this.imageUrl,
+    required this.description,
     required this.likes,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.deletedAt,
   });
 }
