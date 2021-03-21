@@ -4,5 +4,5 @@ import '../../factories.dart';
 
 HomePresenter makeGetxHomePresenter() => GetxHomePresenter(
       loadPosts: makeRemoteLoadPosts(),
-      loadCurrentUser: makeRemoteLoadCurrentUser(),
+      loadUserSelf: makeRemoteLoadUserSelf(),
     );
