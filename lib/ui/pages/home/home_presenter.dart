@@ -1,3 +1,3 @@
 abstract class HomePresenter {
-  Future<void> loadPostsData();
+  Future<void> loadPostsData(String userUID);
 }

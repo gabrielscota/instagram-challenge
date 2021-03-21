@@ -30,8 +30,11 @@ class Stories extends StatelessWidget {
           if (index == 0) {
             return Storie(
               storieEntity: StorieEntity(
-                id: '0',
+                uid: '0',
                 user: loggedUser,
+                createdAt: '',
+                updatedAt: '',
+                deletedAt: '',
               ),
               isFirst: true,
             );

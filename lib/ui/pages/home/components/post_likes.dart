@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../domain/entities/entities.dart';
 
-void showPostLikes(BuildContext context, List<UserEntity> likes) {
+void showPostLikes(BuildContext context, List<UserLikeEntity> likes) {
   final ScrollController scrollController = ScrollController();
   bool dispose = false;
 
@@ -54,7 +54,7 @@ void showPostLikes(BuildContext context, List<UserEntity> likes) {
                 ListView.builder(
                   itemCount: likes.length,
                   itemBuilder: (context, index) => UserLiked(
-                    userPhoto: Image.asset(likes[index].userPhoto).image,
+                    userPhoto: Image.asset(likes[index].avatar).image,
                     username: likes[index].username,
                     name: likes[index].name,
                   ),

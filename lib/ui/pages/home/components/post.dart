@@ -66,7 +66,7 @@ class _PostState extends State<Post> {
                   children: [
                     CircleAvatar(
                       backgroundImage:
-                          Image.asset(widget.postEntity.user.userPhoto).image,
+                          Image.asset(widget.postEntity.user.avatar).image,
                       radius: 20,
                     ),
                     Expanded(

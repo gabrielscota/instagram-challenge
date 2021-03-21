@@ -33,7 +33,7 @@ class Storie extends StatelessWidget {
             ),
             padding: const EdgeInsets.all(2.0),
             child: CircleAvatar(
-              child: Image.asset(storieEntity.user.userPhoto),
+              child: Image.asset(storieEntity.user.avatar),
               radius: 28,
             ),
           ),
