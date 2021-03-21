@@ -23,12 +23,26 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Instagram App Challenge',
+      theme: makeAppTheme(),
       navigatorObservers: [routeObserver!],
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: makeHomePage, transition: Transition.fadeIn),
+        GetPage(
+          name: '/',
+          page: makeSplashPage,
+          transition: Transition.fadeIn,
+        ),
+        GetPage(
+          name: '/login',
+          page: makeHomePage,
+          transition: Transition.fadeIn,
+        ),
+        GetPage(
+          name: '/home',
+          page: makeHomePage,
+          transition: Transition.fadeIn,
+        ),
       ],
-      theme: makeAppTheme(),
     );
   }
 }
