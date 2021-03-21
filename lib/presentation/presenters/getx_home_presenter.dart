@@ -6,9 +6,9 @@ import '../../ui/pages/pages.dart';
 
 class GetxHomePresenter extends GetxController implements HomePresenter {
   final LoadPosts loadPosts;
-  final LoadCurrentUser loadCurrentUser;
+  final LoadUserSelf loadUserSelf;
 
-  GetxHomePresenter({required this.loadPosts, required this.loadCurrentUser});
+  GetxHomePresenter({required this.loadPosts, required this.loadUserSelf});
 
   final _user = Rx<UserViewModel?>();
   Stream<UserViewModel?> get userStream => _user.stream;
@@ -16,7 +16,7 @@ class GetxHomePresenter extends GetxController implements HomePresenter {
   @override
   Future<void> loadPostsData(String userUID) async {
     try {
-      final UserEntity user = await loadCurrentUser.load(userUID);
+      final UserEntity user = await loadUserSelf.load(userUID);
       _user.subject.add(
         UserViewModel(
           uid: user.uid,
