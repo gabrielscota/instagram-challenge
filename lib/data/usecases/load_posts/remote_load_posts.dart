@@ -24,17 +24,7 @@ class RemoteLoadPosts implements LoadPosts {
           .collection('posts')
           .get();
       return postsQuerySnapshots.docs
-          .map((post) => RemotePostModel(
-                uid: post.id,
-                user: user,
-                subtitle: post['subtitle'],
-                imageUrl: post['imageUrl'],
-                description: post['description'],
-                likes: post['likes'],
-                createdAt: post['createdAt'],
-                updatedAt: post['updatedAt'],
-                deletedAt: post['deletedAt'],
-              ).toEntity())
+          .map((post) => RemotePostModel.fromJsonWithUser(post.data()!, user).toEntity())
           .toList();
     } catch (error) {
       throw DomainError.unexpected;

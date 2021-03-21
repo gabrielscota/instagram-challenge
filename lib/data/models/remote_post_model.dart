@@ -43,6 +43,23 @@ class RemotePostModel {
     );
   }
 
+  factory RemotePostModel.fromJsonWithUser(Map json, RemoteUserModel user) {
+    if (!json.containsKey('uid')) {
+      throw FirebaseError.invalidData;
+    }
+    return RemotePostModel(
+      uid: json['uid'],
+      user: user,
+      subtitle: json['subtitle'],
+      imageUrl: json['imageUrl'],
+      description: json['description'],
+      likes: [],
+      createdAt: json['createdAt'] != null ? json['createdAt'] : '',
+      updatedAt: json['updatedAt'] != null ? json['updatedAt'] : '',
+      deletedAt: json['deletedAt'] != null ? json['deletedAt'] : '',
+    );
+  }
+
   PostEntity toEntity() => PostEntity(
         uid: uid,
         user: user.toEntity(),

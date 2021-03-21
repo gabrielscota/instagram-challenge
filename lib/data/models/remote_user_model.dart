@@ -37,9 +37,9 @@ class RemoteUserModel {
       avatar: json['avatar'],
       name: json['name'],
       posts: [],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
-      deletedAt: json['deletedAt'],
+      createdAt: json['createdAt'] != null ? json['createdAt'] : '',
+      updatedAt: json['updatedAt'] != null ? json['updatedAt'] : '',
+      deletedAt: json['deletedAt'] != null ? json['deletedAt'] : '',
     );
   }
 
