@@ -1,5 +1,5 @@
 import '../entities/entities.dart';
 
-abstract class LoadCurrentUser {
+abstract class LoadUserSelf {
   Future<UserEntity> load(String userUID);
 }
