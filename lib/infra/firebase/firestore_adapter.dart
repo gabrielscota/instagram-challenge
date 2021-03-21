@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../data/firebase/firebase.dart';
 
-class Firestore extends CloudFirestore {
+class FirestoreAdapter extends CloudFirestore {
   final FirebaseFirestore firestore;
 
-  Firestore({required this.firestore});
+  FirestoreAdapter({required this.firestore});
 
   @override
   CollectionReference getCollection({required String collectionName}) {
