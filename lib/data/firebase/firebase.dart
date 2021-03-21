@@ -1,1 +1,2 @@
-export './cloud_firestore.dart';
+export './firebase_error.dart';
+export './firebase_firestore.dart';
