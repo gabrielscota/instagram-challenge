@@ -21,7 +21,10 @@ class _PostState extends State<Post> {
   late ui.Image imageLoaded;
 
   Future<void> loadImage(String assetUrl) async {
-    final Image image = Image(image: AssetImage(assetUrl));
+    final Image image = Image(
+      image: AssetImage(assetUrl),
+      filterQuality: FilterQuality.high,
+    );
     Completer<ui.Image> completer = new Completer<ui.Image>();
     image.image
         .resolve(new ImageConfiguration())
@@ -123,6 +126,7 @@ class _PostState extends State<Post> {
                           height: imageLoaded.height > 3600 ? 420 : 320,
                           width: double.infinity,
                           fit: BoxFit.cover,
+                          filterQuality: FilterQuality.high,
                         ),
                       ),
                     );
