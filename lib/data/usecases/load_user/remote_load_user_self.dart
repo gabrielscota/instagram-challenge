@@ -4,10 +4,10 @@ import '../../../domain/usecases/usecases.dart';
 import '../../firebase/firebase.dart';
 import '../../models/models.dart';
 
-class RemoteLoadCurrentUser implements LoadCurrentUser {
+class RemoteLoadUserSelf implements LoadUserSelf {
   final CloudFirestore cloudFirestore;
 
-  RemoteLoadCurrentUser({required this.cloudFirestore});
+  RemoteLoadUserSelf({required this.cloudFirestore});
 
   @override
   Future<UserEntity> load(String userUID) async {
