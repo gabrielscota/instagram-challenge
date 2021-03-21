@@ -1,4 +1,6 @@
-class UserViewModel {
+import 'package:equatable/equatable.dart';
+
+class UserViewModel extends Equatable {
   final String uid;
   final String username;
   final String avatar;
@@ -10,4 +12,7 @@ class UserViewModel {
     required this.avatar,
     required this.name,
   });
+
+  @override
+  List<Object?> get props => [uid, username, avatar, name];
 }

@@ -1,12 +1,14 @@
+import 'package:equatable/equatable.dart';
+
 import './entities.dart';
 
-class PostEntity {
+class PostEntity extends Equatable {
   final String uid;
   final UserEntity user;
   final String subtitle;
   final String imageUrl;
   final String description;
-  var likes = <UserLikeEntity>[];
+  final List<UserLikeEntity> likes;
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
@@ -22,4 +24,17 @@ class PostEntity {
     required this.updatedAt,
     required this.deletedAt,
   });
+
+  @override
+  List<Object?> get props => [
+        uid,
+        user,
+        subtitle,
+        imageUrl,
+        description,
+        likes,
+        createdAt,
+        updatedAt,
+        deletedAt,
+      ];
 }

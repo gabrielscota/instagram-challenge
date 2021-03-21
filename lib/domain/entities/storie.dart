@@ -1,6 +1,8 @@
+import 'package:equatable/equatable.dart';
+
 import './entities.dart';
 
-class StorieEntity {
+class StorieEntity extends Equatable {
   final String uid;
   final UserEntity user;
   final String createdAt;
@@ -14,4 +16,13 @@ class StorieEntity {
     required this.updatedAt,
     required this.deletedAt,
   });
+
+  @override
+  List<Object?> get props => [
+        uid,
+        user,
+        createdAt,
+        updatedAt,
+        deletedAt,
+      ];
 }
