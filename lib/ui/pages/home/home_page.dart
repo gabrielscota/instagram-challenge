@@ -36,6 +36,11 @@ class _HomePageState extends State<HomePage> {
             allowImplicitScrolling: false,
             pageSnapping: true,
             physics: ClampingScrollPhysics(),
+            onPageChanged: (value) {
+              if (value == 2) {
+                widget.presenter.loadPostsData('zB6a2El0OfkPL2VEuH9z');
+              }
+            },
             children: [
               Container(color: Colors.green),
               Stack(
@@ -45,10 +50,26 @@ class _HomePageState extends State<HomePage> {
                   BottomNavigation(),
                 ],
               ),
-              Container(color: Colors.red),
+              StreamBuilder<UserViewModel?>(
+                stream: widget.presenter.userStream,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(snapshot.data!.uid),
+                        Text(snapshot.data!.username),
+                        Text(snapshot.data!.name),
+                      ],
+                    );
+                  } else {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                },
+              ),
             ],
           );
-        }
+        },
       ),
     );
   }

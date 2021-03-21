@@ -17,11 +17,13 @@ class GetxHomePresenter extends GetxController implements HomePresenter {
   Future<void> loadPostsData(String userUID) async {
     try {
       final UserEntity user = await loadCurrentUser.load(userUID);
-      _user.value = UserViewModel(
-        uid: user.uid,
-        username: user.username,
-        avatar: user.avatar,
-        name: user.name,
+      _user.subject.add(
+        UserViewModel(
+          uid: user.uid,
+          username: user.username,
+          avatar: user.avatar,
+          name: user.name,
+        ),
       );
     } catch (_) {}
   }
