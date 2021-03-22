@@ -28,7 +28,7 @@ class RemotePostModel {
 
   factory RemotePostModel.fromJson(Map json) {
     if (!json.containsKey('uid')) {
-      throw FirebaseError.invalidData;
+      throw FirebaseFirestoreError.invalidData;
     }
     return RemotePostModel(
       uid: json['uid'],
@@ -45,7 +45,7 @@ class RemotePostModel {
 
   factory RemotePostModel.fromJsonWithUser(Map json, RemoteUserModel user) {
     if (!json.containsKey('uid')) {
-      throw FirebaseError.invalidData;
+      throw FirebaseFirestoreError.invalidData;
     }
     return RemotePostModel(
       uid: json['uid'],

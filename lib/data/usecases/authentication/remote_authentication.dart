@@ -16,14 +16,11 @@ class RemoteAuthentication implements Authentication {
         email: params.email,
         password: params.password,
       );
-      return userCredential.user!.uid;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        throw DomainError.invalidCredentials;
-      } else if (e.code == 'wrong-password') {
-        throw DomainError.invalidCredentials;
-      }
-      throw DomainError.unexpected;
+      return userCredential.user?.uid;
+    } on FirebaseAuthError catch (error) {
+      throw error == FirebaseAuthError.wrongPassword
+          ? DomainError.invalidCredentials
+          : DomainError.unexpected;
     }
   }
 }

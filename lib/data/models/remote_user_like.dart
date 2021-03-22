@@ -15,7 +15,7 @@ class RemoteUserLikeModel {
 
   factory RemoteUserLikeModel.fromJson(Map json) {
     if (!json.containsKey('username')) {
-      throw FirebaseError.invalidData;
+      throw FirebaseFirestoreError.invalidData;
     }
     return RemoteUserLikeModel(
       username: json['username'],

@@ -28,7 +28,7 @@ class RemoteUserModel {
 
   factory RemoteUserModel.fromJson(Map json) {
     if (!json.containsKey('uid')) {
-      throw FirebaseError.invalidData;
+      throw FirebaseFirestoreError.invalidData;
     }
     return RemoteUserModel(
       uid: json['uid'],
