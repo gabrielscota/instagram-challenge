@@ -68,6 +68,7 @@ class GetxLoginPresenter extends GetxController
     try {
       mainError = null;
       isLoading = true;
+      await Future.delayed(const Duration(seconds: 2));
       final userUID = await authentication.auth(
         AuthenticationParams(email: _email!, password: _password!),
       );
