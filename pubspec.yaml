@@ -36,6 +36,7 @@ flutter:
     - lib/ui/assets/fonts/
     - lib/ui/assets/icons/broken/
     - lib/ui/assets/icons/bold/
+    - lib/ui/assets/icons/brands/
     - lib/ui/assets/images/
     - lib/ui/assets/animations/
 
