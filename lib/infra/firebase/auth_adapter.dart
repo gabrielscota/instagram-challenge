@@ -12,13 +12,20 @@ class AuthAdapter extends FirebaseAuthentication {
     required String email,
     required String password,
   }) async {
-    UserCredential? userCredential;
     try {
-      userCredential = await firebaseAuth.signInWithEmailAndPassword(
+      final userCredential = await firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-    } catch (_) {}
-    return userCredential!;
+      return userCredential;
+    } on FirebaseAuthException catch (error) {
+      if (error.code == FirebaseAuthError.userNotFound.code) {
+        throw FirebaseAuthError.userNotFound;
+      } else if (error.code == FirebaseAuthError.wrongPassword.code) {
+        throw FirebaseAuthError.wrongPassword;
+      } else {
+        throw FirebaseAuthError.internalError;
+      }
+    }
   }
 }
