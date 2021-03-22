@@ -81,7 +81,7 @@ class SignupPage extends StatelessWidget with KeyboardManager, UIErrorManager, N
                               const SizedBox(height: 12.0),
                               LoginButton(),
                               TextButton(
-                                onPressed: presenter.goToSignUp,
+                                onPressed: presenter.goToLogin,
                                 child: Text(
                                   R.string.forgetPassword,
                                   style: Theme.of(context).textTheme.subtitle2?.copyWith(color: Colors.blue[400]),
@@ -112,7 +112,7 @@ class SignupPage extends StatelessWidget with KeyboardManager, UIErrorManager, N
                                       style: Theme.of(context).textTheme.subtitle2?.copyWith(color: Colors.grey[500]),
                                     ),
                                     TextButton(
-                                      onPressed: presenter.goToSignUp,
+                                      onPressed: presenter.goToLogin,
                                       style: TextButton.styleFrom(
                                         padding: EdgeInsets.only(left: 4.0),
                                       ),

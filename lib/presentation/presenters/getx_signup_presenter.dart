@@ -84,7 +84,7 @@ class GetxSignupPresenter extends GetxController
     }
   }
 
-  void goToSignUp() {
-    navigateTo = '/signup';
+  void goToLogin() {
+    navigateTo = '/login';
   }
 }
