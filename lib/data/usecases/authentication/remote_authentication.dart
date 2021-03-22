@@ -18,7 +18,7 @@ class RemoteAuthentication implements Authentication {
       );
       return userCredential.user?.uid;
     } on FirebaseAuthError catch (error) {
-      throw error == FirebaseAuthError.wrongPassword
+      throw error == FirebaseAuthError.wrongPassword || error == FirebaseAuthError.userNotFound
           ? DomainError.invalidCredentials
           : DomainError.unexpected;
     }
