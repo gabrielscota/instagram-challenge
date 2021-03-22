@@ -44,6 +44,13 @@ class MyApp extends StatelessWidget {
           transitionDuration: const Duration(milliseconds: 800),
         ),
         GetPage(
+          name: '/signup',
+          title: 'SignUp Page',
+          page: makeSignupPage,
+          transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 800),
+        ),
+        GetPage(
           name: '/home',
           title: 'Home Page',
           page: makeHomePage,
