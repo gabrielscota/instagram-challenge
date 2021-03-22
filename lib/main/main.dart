@@ -31,18 +31,24 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: '/',
+          title: 'Splash Page',
           page: makeSplashPage,
           transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 800),
         ),
         GetPage(
           name: '/login',
+          title: 'Login Page',
           page: makeLoginPage,
           transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 800),
         ),
         GetPage(
           name: '/home',
+          title: 'Home Page',
           page: makeHomePage,
           transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 800),
         ),
       ],
     );
