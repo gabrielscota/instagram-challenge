@@ -24,6 +24,14 @@ class LoginButton extends StatelessWidget with KeyboardManager {
                     presenter.auth();
                   }
                 : null,
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue,
+              elevation: 2.0,
+              shadowColor: Theme.of(context).primaryColor.withOpacity(0.2),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6.0),
+              ),
+            ),
             child: StreamBuilder<bool?>(
               stream: presenter.isLoadingStream,
               builder: (context, snapshot) {
@@ -37,7 +45,13 @@ class LoginButton extends StatelessWidget with KeyboardManager {
                     ),
                   );
                 } else {
-                  return Text(R.string.enter.toUpperCase());
+                  return Text(
+                    R.string.enter,
+                    style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  );
                 }
               },
             ),
