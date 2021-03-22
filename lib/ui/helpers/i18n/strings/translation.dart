@@ -7,8 +7,10 @@ abstract class Translation {
 
   String get addAccount;
   String get confirmPassword;
+  String get dontHaveAccount;
   String get email;
   String get enter;
+  String get forgetPassword;
   String get login;
   String get name;
   String get password;
