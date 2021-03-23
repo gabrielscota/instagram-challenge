@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../mixins/mixins.dart';
 import '../../pages/pages.dart';
 import './components/components.dart';
 
@@ -12,7 +14,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with NavigationManager {
   final ScrollController _scrollController = ScrollController();
 
   PageController? _pageController;
@@ -29,6 +31,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       body: Builder(
         builder: (context) {
+          handleNavigation(widget.presenter.navigateToStream, clear: true);
           widget.presenter.loadPostsData('zB6a2El0OfkPL2VEuH9z');
 
           return PageView(
@@ -43,12 +46,15 @@ class _HomePageState extends State<HomePage> {
             },
             children: [
               Container(color: Colors.green),
-              Stack(
-                children: [
-                  Feed(scrollController: _scrollController),
-                  HomeAppBar(scrollController: _scrollController),
-                  BottomNavigation(),
-                ],
+              Provider(
+                create: (_) => widget.presenter,
+                child: Stack(
+                  children: [
+                    Feed(scrollController: _scrollController),
+                    HomeAppBar(scrollController: _scrollController),
+                    BottomNavigation(),
+                  ],
+                ),
               ),
               StreamBuilder<UserViewModel?>(
                 stream: widget.presenter.userStream,
