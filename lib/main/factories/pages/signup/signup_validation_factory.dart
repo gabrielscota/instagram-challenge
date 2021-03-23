@@ -9,5 +9,7 @@ Validation makeSignupValidation() => ValidationComposite(
 
 List<FieldValidation> makeSignupValidations() => [
       ...ValidationBuilder.field('email').required().email().build(),
-      ...ValidationBuilder.field('password').required().min(6).build()
+      ...ValidationBuilder.field('name').required().min(3).build(),
+      ...ValidationBuilder.field('password').required().min(6).build(),
+      ...ValidationBuilder.field('passwordConfirmation').required().sameAs('password').build(),
     ];
