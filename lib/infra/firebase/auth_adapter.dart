@@ -28,4 +28,13 @@ class AuthAdapter extends FirebaseAuthentication {
       }
     }
   }
+
+  @override
+  Future<void> logout() async {
+    try {
+      await firebaseAuth.signOut();
+    } on FirebaseAuthException {
+      throw FirebaseAuthError.internalError;
+    }
+  }
 }
