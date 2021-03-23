@@ -4,7 +4,7 @@ import '../../../domain/helpers/helpers.dart';
 import '../../../domain/usecases/usecases.dart';
 import '../../firebase/firebase.dart';
 
-class RemoteAuthentication implements Authentication {
+class RemoteAuthentication implements UserAuthentication {
   final FirebaseAuthentication firebaseAuthentication;
 
   RemoteAuthentication({required this.firebaseAuthentication});
