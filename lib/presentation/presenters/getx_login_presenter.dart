@@ -11,7 +11,7 @@ class GetxLoginPresenter extends GetxController
     with LoadingManager, NavigationManager, FormManager, UIErrorManager
     implements LoginPresenter {
   final Validation validation;
-  final Authentication authentication;
+  final UserAuthentication authentication;
   final SaveCurrentUser saveCurrentUser;
 
   final _emailError = Rx<UIError>();
@@ -72,7 +72,7 @@ class GetxLoginPresenter extends GetxController
       final userUID = await authentication.auth(
         AuthenticationParams(email: _email!, password: _password!),
       );
-      await saveCurrentUser.save(userUID);
+      await saveCurrentUser.save(userUID: userUID);
       navigateTo = '/home';
     } on DomainError catch (error) {
       switch (error) {

@@ -11,17 +11,23 @@ class GetxSignupPresenter extends GetxController
     with LoadingManager, NavigationManager, FormManager, UIErrorManager
     implements SignupPresenter {
   final Validation validation;
-  final Authentication authentication;
+  final UserAuthentication authentication;
   final SaveCurrentUser saveCurrentUser;
 
   final _emailError = Rx<UIError>();
+  final _nameError = Rx<UIError>();
   final _passwordError = Rx<UIError>();
+  final _passwordConfirmationError = Rx<UIError>();
 
   String? _email;
+  String? _name;
   String? _password;
+  String? _passwordConfirmation;
 
   Stream<UIError?> get emailErrorStream => _emailError.stream;
+  Stream<UIError?> get nameErrorStream => _nameError.stream;
   Stream<UIError?> get passwordErrorStream => _passwordError.stream;
+  Stream<UIError?> get passwordConfirmationErrorStream => _passwordConfirmationError.stream;
 
   GetxSignupPresenter({
     required this.validation,
@@ -35,16 +41,30 @@ class GetxSignupPresenter extends GetxController
     _validateForm();
   }
 
+  void validateName(String name) {
+    _name = name;
+    _nameError.value = _validateField('name');
+    _validateForm();
+  }
+
   void validatePassword(String password) {
     _password = password;
     _passwordError.value = _validateField('password');
     _validateForm();
   }
 
+  void validatePasswordConfirmation(String passwordConfirmation) {
+    _passwordConfirmation = passwordConfirmation;
+    _passwordConfirmationError.value = _validateField('passwordConfirmation');
+    _validateForm();
+  }
+
   UIError? _validateField(String field) {
     final formData = {
       'email': _email,
+      'name': _name,
       'password': _password,
+      'passwordConfirmation': _passwordConfirmation,
     };
     final error = validation.validate(field: field, input: formData);
     switch (error) {
@@ -58,10 +78,17 @@ class GetxSignupPresenter extends GetxController
   }
 
   void _validateForm() {
-    isFormValid = _emailError.value == null && _passwordError.value == null && _email != null && _password != null;
+    isFormValid = _emailError.value == null &&
+        _nameError.value == null &&
+        _passwordError.value == null &&
+        _passwordConfirmationError.value == null &&
+        _name != null &&
+        _email != null &&
+        _password != null &&
+        _passwordConfirmation != null;
   }
 
-  Future<void> auth() async {
+  Future<void> signup() async {
     try {
       mainError = null;
       isLoading = true;
@@ -69,7 +96,7 @@ class GetxSignupPresenter extends GetxController
       final userUID = await authentication.auth(
         AuthenticationParams(email: _email!, password: _password!),
       );
-      await saveCurrentUser.save(userUID);
+      await saveCurrentUser.save(userUID: userUID);
       navigateTo = '/home';
     } on DomainError catch (error) {
       switch (error) {
