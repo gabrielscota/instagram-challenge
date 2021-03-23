@@ -25,7 +25,7 @@ class EmailInput extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(6.0),
               borderSide: BorderSide(
-                color: Theme.of(context).primaryColor.withOpacity(0.4),
+                color: Theme.of(context).primaryColor.withOpacity(0.2),
                 width: 1.0,
               ),
             ),
@@ -39,7 +39,7 @@ class EmailInput extends StatelessWidget {
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(6.0),
               borderSide: BorderSide(
-                color: Theme.of(context).primaryColor.withOpacity(0.2),
+                color: Theme.of(context).primaryColor.withOpacity(0.1),
                 width: 1.0,
               ),
             ),
@@ -51,7 +51,12 @@ class EmailInput extends StatelessWidget {
               ),
             ),
             errorText: snapshot.hasData ? snapshot.data!.description : null,
+            contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+            labelStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
+                  color: Theme.of(context).primaryColor.withOpacity(0.4),
+                ),
           ),
+          style: Theme.of(context).textTheme.subtitle1,
           keyboardType: TextInputType.emailAddress,
           onChanged: presenter.validateEmail,
         );

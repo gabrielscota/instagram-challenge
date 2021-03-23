@@ -26,6 +26,7 @@ class LoginPage extends StatelessWidget with KeyboardManager, UIErrorManager, Na
               create: (_) => presenter,
               child: Form(
                 child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       minHeight: MediaQuery.of(context).size.height,
@@ -35,16 +36,14 @@ class LoginPage extends StatelessWidget with KeyboardManager, UIErrorManager, Na
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       children: [
+                        const SizedBox(),
                         Padding(
                           padding: EdgeInsets.all(32),
                           child: Column(
                             children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.07),
-                                child: SvgPicture.asset(
-                                  'lib/ui/assets/images/instagram-wordmark.svg',
-                                  height: 80.0,
-                                ),
+                              SvgPicture.asset(
+                                'lib/ui/assets/images/instagram-wordmark.svg',
+                                height: 80.0,
                               ),
                               const SizedBox(height: 24.0),
                               FacebookLoginButton(),
@@ -63,7 +62,9 @@ class LoginPage extends StatelessWidget with KeyboardManager, UIErrorManager, Na
                                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                     child: Text(
                                       'ou',
-                                      style: Theme.of(context).textTheme.bodyText2,
+                                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                            color: Theme.of(context).primaryColor.withOpacity(0.6),
+                                          ),
                                     ),
                                   ),
                                   Expanded(
@@ -76,9 +77,9 @@ class LoginPage extends StatelessWidget with KeyboardManager, UIErrorManager, Na
                               ),
                               const SizedBox(height: 20.0),
                               EmailInput(),
-                              const SizedBox(height: 12.0),
+                              const SizedBox(height: 10.0),
                               PasswordInput(),
-                              const SizedBox(height: 12.0),
+                              const SizedBox(height: 16.0),
                               LoginButton(),
                               TextButton(
                                 onPressed: presenter.goToSignUp,
@@ -114,7 +115,8 @@ class LoginPage extends StatelessWidget with KeyboardManager, UIErrorManager, Na
                                     TextButton(
                                       onPressed: presenter.goToSignUp,
                                       style: TextButton.styleFrom(
-                                        padding: EdgeInsets.only(left: 4.0),
+                                        padding: EdgeInsets.symmetric(horizontal: 4.0),
+                                        alignment: Alignment.centerLeft,
                                       ),
                                       child: Text(
                                         R.string.addAccount,

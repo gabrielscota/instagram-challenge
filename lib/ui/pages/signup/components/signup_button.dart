@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../helpers/helpers.dart';
 import '../signup.dart';
 
-class LoginButton extends StatelessWidget with KeyboardManager {
+class SignUpButton extends StatelessWidget with KeyboardManager {
   @override
   Widget build(BuildContext context) {
     final presenter = Provider.of<SignupPresenter>(context);
@@ -21,7 +21,7 @@ class LoginButton extends StatelessWidget with KeyboardManager {
             onPressed: snapshot.data == true
                 ? () {
                     hideKeyboard(context);
-                    presenter.auth();
+                    presenter.signup();
                   }
                 : null,
             style: ElevatedButton.styleFrom(
@@ -46,7 +46,7 @@ class LoginButton extends StatelessWidget with KeyboardManager {
                   );
                 } else {
                   return Text(
-                    R.string.enter,
+                    R.string.signUp,
                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,

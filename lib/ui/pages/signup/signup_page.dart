@@ -26,6 +26,7 @@ class SignupPage extends StatelessWidget with KeyboardManager, UIErrorManager, N
               create: (_) => presenter,
               child: Form(
                 child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       minHeight: MediaQuery.of(context).size.height,
@@ -35,16 +36,14 @@ class SignupPage extends StatelessWidget with KeyboardManager, UIErrorManager, N
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       children: [
+                        const SizedBox(),
                         Padding(
                           padding: EdgeInsets.all(32),
                           child: Column(
                             children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.07),
-                                child: SvgPicture.asset(
-                                  'lib/ui/assets/images/instagram-wordmark.svg',
-                                  height: 80.0,
-                                ),
+                              SvgPicture.asset(
+                                'lib/ui/assets/images/instagram-wordmark.svg',
+                                height: 80.0,
                               ),
                               const SizedBox(height: 24.0),
                               FacebookLoginButton(),
@@ -63,7 +62,9 @@ class SignupPage extends StatelessWidget with KeyboardManager, UIErrorManager, N
                                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                     child: Text(
                                       'ou',
-                                      style: Theme.of(context).textTheme.bodyText2,
+                                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                            color: Theme.of(context).primaryColor.withOpacity(0.6),
+                                          ),
                                     ),
                                   ),
                                   Expanded(
@@ -76,17 +77,14 @@ class SignupPage extends StatelessWidget with KeyboardManager, UIErrorManager, N
                               ),
                               const SizedBox(height: 20.0),
                               EmailInput(),
-                              const SizedBox(height: 12.0),
+                              const SizedBox(height: 10.0),
+                              NameInput(),
+                              const SizedBox(height: 10.0),
                               PasswordInput(),
-                              const SizedBox(height: 12.0),
-                              LoginButton(),
-                              TextButton(
-                                onPressed: presenter.goToLogin,
-                                child: Text(
-                                  R.string.forgetPassword,
-                                  style: Theme.of(context).textTheme.subtitle2?.copyWith(color: Colors.blue[400]),
-                                ),
-                              ),
+                              const SizedBox(height: 10.0),
+                              PasswordConfirmationInput(),
+                              const SizedBox(height: 16.0),
+                              SignUpButton(),
                             ],
                           ),
                         ),
@@ -108,16 +106,17 @@ class SignupPage extends StatelessWidget with KeyboardManager, UIErrorManager, N
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      R.string.dontHaveAccount,
+                                      R.string.haveAccount,
                                       style: Theme.of(context).textTheme.subtitle2?.copyWith(color: Colors.grey[500]),
                                     ),
                                     TextButton(
                                       onPressed: presenter.goToLogin,
                                       style: TextButton.styleFrom(
-                                        padding: EdgeInsets.only(left: 4.0),
+                                        padding: EdgeInsets.symmetric(horizontal: 4.0),
+                                        alignment: Alignment.centerLeft,
                                       ),
                                       child: Text(
-                                        R.string.addAccount,
+                                        R.string.login,
                                         style: Theme.of(context).textTheme.subtitle2,
                                       ),
                                     ),

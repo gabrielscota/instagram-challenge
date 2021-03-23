@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../helpers/helpers.dart';
-import '../login.dart';
+import '../signup.dart';
 
-class PasswordInput extends StatelessWidget {
+class PasswordConfirmationInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<LoginPresenter>(context);
+    final presenter = Provider.of<SignupPresenter>(context);
 
     return StreamBuilder<UIError?>(
-      stream: presenter.passwordErrorStream,
+      stream: presenter.passwordConfirmationErrorStream,
       builder: (context, snapshot) {
         return TextFormField(
           decoration: InputDecoration(
-            labelText: R.string.password,
+            labelText: R.string.confirmPassword,
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(6.0),
               borderSide: BorderSide(
@@ -58,7 +58,7 @@ class PasswordInput extends StatelessWidget {
           ),
           style: Theme.of(context).textTheme.subtitle1,
           obscureText: true,
-          onChanged: presenter.validatePassword,
+          onChanged: presenter.validatePasswordConfirmation,
         );
       },
     );

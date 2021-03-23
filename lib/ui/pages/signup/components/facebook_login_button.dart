@@ -8,7 +8,7 @@ class FacebookLoginButton extends StatelessWidget {
       onPressed: () {},
       style: ElevatedButton.styleFrom(
         primary: Color.fromRGBO(1, 99, 224, 1.0),
-        padding: EdgeInsets.symmetric(vertical: 16.0),
+        padding: EdgeInsets.symmetric(vertical: 12.0),
         elevation: 2.0,
         shadowColor: Theme.of(context).primaryColor.withOpacity(0.2),
         shape: RoundedRectangleBorder(
