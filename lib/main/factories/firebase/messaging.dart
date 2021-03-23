@@ -46,7 +46,7 @@ Future<void> initMessaging() async {
             channel.id,
             channel.name,
             channel.description,
-            icon: 'launch_background',
+            icon: 'icon_push',
           ),
         ),
       );
