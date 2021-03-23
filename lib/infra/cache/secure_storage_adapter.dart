@@ -15,11 +15,11 @@ class SecureStorageAdapter
     await secureStorage.write(key: key, value: value);
   }
 
-  Future<String?> fetch(String key) async {
-    return await secureStorage.read(key: key);
+  Future<String?> fetch({String? key}) async {
+    return await secureStorage.read(key: key!);
   }
 
-  Future<void> delete(String key) async {
-    await secureStorage.delete(key: key);
+  Future<void> delete({String? key}) async {
+    await secureStorage.delete(key: key!);
   }
 }

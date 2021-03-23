@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-abstract class Authentication {
+abstract class UserAuthentication {
   Future<String?> auth(AuthenticationParams params);
 }
 
