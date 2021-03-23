@@ -10,7 +10,7 @@ class LocalLoadCurrentUser implements LoadCurrentUser {
 
   Future<UserEntity> load() async {
     try {
-      final String? uid = await fetchSecureCacheStorage.fetch('uid');
+      final String? uid = await fetchSecureCacheStorage.fetch(key: 'uid');
       return UserEntity(
         uid: uid!,
         email: '',

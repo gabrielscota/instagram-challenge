@@ -7,7 +7,7 @@ class LocalSaveCurrentUser implements SaveCurrentUser {
 
   LocalSaveCurrentUser({required this.saveSecureCacheStorage});
 
-  Future<void> save(String? userUID) async {
+  Future<void> save({String? userUID}) async {
     try {
       await saveSecureCacheStorage.save(key: 'uid', value: userUID!);
     } catch (error) {
