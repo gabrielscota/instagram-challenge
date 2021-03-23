@@ -27,6 +27,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.9.0
   lint: ^1.5.3
 
 flutter:
@@ -39,6 +40,7 @@ flutter:
     - lib/ui/assets/icons/brands/
     - lib/ui/assets/images/
     - lib/ui/assets/animations/
+    - lib/ui/assets/logo/
 
   fonts:
     - family: Quicksand
@@ -53,3 +55,10 @@ flutter:
           weight: 600
         - asset: lib/ui/assets/fonts/Quicksand-Bold.ttf
           weight: 700
+
+flutter_icons:
+  image_path: "lib/ui/assets/logo/icon.png"
+  android: true
+  ios: true
+  adaptive_icon_background: "lib/ui/assets/logo/background.png"
+  adaptive_icon_foreground: "lib/ui/assets/logo/foreground.png"
