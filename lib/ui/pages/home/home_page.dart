@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> with NavigationManager {
 
   @override
   void initState() {
-    _pageController = PageController(initialPage: 1);
+    _pageController = PageController(initialPage: 1, keepPage: true);
     super.initState();
   }
 
@@ -36,9 +36,8 @@ class _HomePageState extends State<HomePage> with NavigationManager {
 
           return PageView(
             controller: _pageController,
-            allowImplicitScrolling: false,
             pageSnapping: true,
-            physics: ClampingScrollPhysics(),
+            physics: PageScrollPhysics(),
             onPageChanged: (value) {
               if (value == 2) {
                 widget.presenter.loadPostsData('zB6a2El0OfkPL2VEuH9z');
