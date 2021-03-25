@@ -60,6 +60,20 @@ class RemotePostModel {
     );
   }
 
+  factory RemotePostModel.fromEntity(PostEntity entity) {
+    return RemotePostModel(
+      uid: entity.uid,
+      user: RemoteUserModel.fromEntity(entity.user),
+      subtitle: entity.subtitle,
+      imageUrl: entity.imageUrl,
+      description: entity.description,
+      likes: entity.likes.map((post) => RemoteUserLikeModel.fromEntity(post)).toList(),
+      createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
+      deletedAt: entity.deletedAt,
+    );
+  }
+
   PostEntity toEntity() => PostEntity(
         uid: uid,
         user: user.toEntity(),
