@@ -30,6 +30,28 @@ class AuthAdapter extends FirebaseAuthentication {
   }
 
   @override
+  Future<UserCredential> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return userCredential;
+    } on FirebaseAuthException catch (error) {
+      if (error.code == FirebaseAuthError.userNotFound.code) {
+        throw FirebaseAuthError.userNotFound;
+      } else if (error.code == FirebaseAuthError.wrongPassword.code) {
+        throw FirebaseAuthError.wrongPassword;
+      } else {
+        throw FirebaseAuthError.internalError;
+      }
+    }
+  }
+
+  @override
   Future<void> logout() async {
     try {
       await firebaseAuth.signOut();

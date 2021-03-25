@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 
 enum FirebaseAuthError {
-  emailAlreadyExists,
   internalError,
   invalidEmail,
   invalidPassword,
   userNotFound,
   wrongPassword,
+  weakPassword,
+  emailAlreadyInUse,
 }
 
 extension FirebaseAuthErrorExtension on FirebaseAuthError {
@@ -18,6 +19,10 @@ extension FirebaseAuthErrorExtension on FirebaseAuthError {
         return 'user-not-found';
       case FirebaseAuthError.wrongPassword:
         return 'wrong-password';
+      case FirebaseAuthError.weakPassword:
+        return 'weak-password';
+      case FirebaseAuthError.emailAlreadyInUse:
+        return 'email-already-in-use';
       default:
         return 'internal-error';
     }
