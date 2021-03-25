@@ -1,4 +1,7 @@
+import 'dart:math' as math;
+
 import 'package:get/get.dart';
+import 'package:instagram_challenge/domain/entities/entities.dart';
 
 import '../../ui/helpers/helpers.dart';
 import '../../ui/pages/pages.dart';
@@ -11,7 +14,8 @@ class GetxSignupPresenter extends GetxController
     with LoadingManager, NavigationManager, FormManager, UIErrorManager
     implements SignupPresenter {
   final Validation validation;
-  final UserAuthentication authentication;
+  final UserAuthentication userAuthentication;
+  final UserSignUp userSignUp;
   final SaveCurrentUser saveCurrentUser;
 
   final _emailError = Rx<UIError>();
@@ -31,7 +35,8 @@ class GetxSignupPresenter extends GetxController
 
   GetxSignupPresenter({
     required this.validation,
-    required this.authentication,
+    required this.userAuthentication,
+    required this.userSignUp,
     required this.saveCurrentUser,
   });
 
@@ -93,8 +98,22 @@ class GetxSignupPresenter extends GetxController
       mainError = null;
       isLoading = true;
       await Future.delayed(const Duration(seconds: 2));
-      final userUID = await authentication.auth(
-        AuthenticationParams(email: _email!, password: _password!),
+      final userUID = await userSignUp.signUp(
+        SignUpParams(
+          email: _email!,
+          password: _password!,
+          user: UserEntity(
+            uid: '',
+            email: _email!,
+            username: '${_email!.split('@')[0]}${math.Random().nextInt(1000)}',
+            avatar: '',
+            name: _name!,
+            posts: [],
+            createdAt: DateTime.now().toIso8601String(),
+            updatedAt: DateTime.now().toIso8601String(),
+            deletedAt: '',
+          ),
+        ),
       );
       await saveCurrentUser.save(userUID: userUID);
       navigateTo = '/home';
