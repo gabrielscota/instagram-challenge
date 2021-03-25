@@ -9,6 +9,8 @@ class UserEntity extends Equatable {
   final String avatar;
   final String name;
   final List<PostEntity> posts;
+  final List<String> followers;
+  final List<String> following;
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
@@ -20,6 +22,8 @@ class UserEntity extends Equatable {
     required this.avatar,
     required this.name,
     required this.posts,
+    required this.followers,
+    required this.following,
     required this.createdAt,
     required this.updatedAt,
     required this.deletedAt,
