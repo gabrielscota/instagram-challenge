@@ -22,17 +22,7 @@ class RemoteSignUp implements UserSignUp {
         password: params.password,
       );
       final CollectionReference users = cloudFirestore.getCollection(collectionName: 'users');
-      Map<String, dynamic> remoteUser = RemoteUserModel(
-        uid: userCredential.user!.uid,
-        email: params.email,
-        username: params.user.username,
-        avatar: params.user.avatar,
-        name: params.user.name,
-        posts: params.user.posts.map((post) => RemotePostModel.fromEntity(post)).toList(),
-        createdAt: params.user.createdAt,
-        updatedAt: params.user.updatedAt,
-        deletedAt: params.user.deletedAt,
-      ).toJson();
+      Map<String, dynamic> remoteUser = RemoteUserSignUpModel.fromEntityWithUid(params.user, userCredential.user!.uid).toJson();
       users.doc(userCredential.user?.uid).set(remoteUser);
       return userCredential.user?.uid;
     } on FirebaseAuthError catch (error) {
