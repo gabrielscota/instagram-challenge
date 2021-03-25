@@ -3,7 +3,7 @@ import '../../../../ui/pages/pages.dart';
 import '../../factories.dart';
 
 LoginPresenter makeGetxLoginPresenter() => GetxLoginPresenter(
-      authentication: makeRemoteAuthentication(),
+      authentication: makeRemoteUserAuthentication(),
       validation: makeLoginValidation(),
       saveCurrentUser: makeLocalSaveCurrentUser(),
     );
