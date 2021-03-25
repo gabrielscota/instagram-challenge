@@ -24,6 +24,14 @@ class RemoteUserLikeModel {
     );
   }
 
+  factory RemoteUserLikeModel.fromEntity(UserLikeEntity entity) {
+    return RemoteUserLikeModel(
+      username: entity.username,
+      avatar: entity.avatar,
+      name: entity.name,
+    );
+  }
+
   UserLikeEntity toEntity() => UserLikeEntity(
         username: username,
         avatar: avatar,
