@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import '../../domain/entities/entities.dart';
 
 class RemoteUserSignUpModel {
@@ -41,6 +43,24 @@ class RemoteUserSignUpModel {
       username: entity.username,
       avatar: entity.avatar,
       name: entity.name,
+      createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
+      deletedAt: entity.deletedAt,
+    );
+  }
+
+  factory RemoteUserSignUpModel.fromEntityWithGoogleSignUpParams(
+    UserEntity entity,
+    String uid,
+    String email,
+    String name,
+  ) {
+    return RemoteUserSignUpModel(
+      uid: uid,
+      email: email,
+      username: '${email.split('@')[0]}${math.Random().nextInt(1000)}',
+      avatar: entity.avatar,
+      name: name,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
       deletedAt: entity.deletedAt,
