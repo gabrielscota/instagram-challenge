@@ -1,6 +1,6 @@
 import '../../helpers/helpers.dart';
 
-abstract class SignupPresenter {
+abstract class SignUpPresenter {
   Stream<UIError?> get emailErrorStream;
   Stream<UIError?> get nameErrorStream;
   Stream<UIError?> get passwordErrorStream;
@@ -14,6 +14,7 @@ abstract class SignupPresenter {
   void validateName(String name);
   void validatePassword(String password);
   void validatePasswordConfirmation(String passwordConfirmation);
+  Future<void> authWithGoogle();
   Future<void> signup();
   void goToLogin();
 }
