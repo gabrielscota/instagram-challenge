@@ -1,5 +1,4 @@
-import 'package:instagram_challenge/domain/entities/entities.dart';
-
+import '../../domain/entities/entities.dart';
 import '../firebase/firebase.dart';
 import './models.dart';
 

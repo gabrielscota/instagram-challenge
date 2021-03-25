@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'package:instagram_challenge/domain/entities/entities.dart';
+import '../entities/entities.dart';
 
 abstract class UserSignUp {
   Future<String?> signUp(SignUpParams params);
