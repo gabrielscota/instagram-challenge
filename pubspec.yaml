@@ -20,6 +20,7 @@ dependencies:
   flutter_secure_storage: ^4.1.0
   flutter_svg: ^0.21.0-nullsafety.0
   get: ^4.0.0-nullsafety.2
+  google_sign_in: ^5.0.1
   lottie: ^1.0.1
   provider: ^5.0.0
   shimmer: ^2.0.0-nullsafety.0
