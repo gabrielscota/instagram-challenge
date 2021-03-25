@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import '../entities/entities.dart';
 
 abstract class UserFacebookSignIn {
-  Future<String?> authWithGoogle(FacebookSignUpParams params);
+  Future<String?> authWithFacebook(FacebookSignUpParams params);
 }
 
 class FacebookSignUpParams extends Equatable {
