@@ -4,4 +4,5 @@ enum DomainError {
   emailInUse,
   accessDenied,
   userNotFound,
+  weakPassword,
 }
