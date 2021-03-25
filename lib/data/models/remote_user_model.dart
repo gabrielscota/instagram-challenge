@@ -9,6 +9,8 @@ class RemoteUserModel {
   final String avatar;
   final String name;
   final List<RemotePostModel> posts;
+  final List<String> followers;
+  final List<String> following;
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
@@ -20,6 +22,8 @@ class RemoteUserModel {
     required this.avatar,
     required this.name,
     required this.posts,
+    required this.followers,
+    required this.following,
     required this.createdAt,
     required this.updatedAt,
     required this.deletedAt,
@@ -36,6 +40,8 @@ class RemoteUserModel {
       avatar: json['avatar'],
       name: json['name'],
       posts: [],
+      followers: [],
+      following: [],
       createdAt: json['createdAt'] != null ? json['createdAt'] : '',
       updatedAt: json['updatedAt'] != null ? json['updatedAt'] : '',
       deletedAt: json['deletedAt'] != null ? json['deletedAt'] : '',
@@ -50,6 +56,8 @@ class RemoteUserModel {
       avatar: entity.avatar,
       name: entity.name,
       posts: entity.posts.map((post) => RemotePostModel.fromEntity(post)).toList(),
+      followers: entity.followers,
+      following: entity.following,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
       deletedAt: entity.deletedAt,
@@ -63,6 +71,8 @@ class RemoteUserModel {
         avatar: avatar,
         name: name,
         posts: posts.map<PostEntity>((post) => post.toEntity()).toList(),
+        followers: followers,
+        following: following,
         createdAt: createdAt,
         updatedAt: updatedAt,
         deletedAt: deletedAt,
@@ -75,6 +85,8 @@ class RemoteUserModel {
         'avatar': avatar,
         'name': name,
         'posts': posts,
+        'followers': followers,
+        'following': following,
         'createdAt': createdAt,
         'updatedAt': updatedAt,
         'deletedAt': deletedAt,
