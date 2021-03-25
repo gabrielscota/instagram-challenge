@@ -43,6 +43,20 @@ class RemoteUserModel {
     );
   }
 
+  factory RemoteUserModel.fromEntity(UserEntity entity) {
+    return RemoteUserModel(
+      uid: entity.uid,
+      email: entity.email,
+      username: entity.username,
+      avatar: entity.avatar,
+      name: entity.name,
+      posts: entity.posts.map((post) => RemotePostModel.fromEntity(post)).toList(),
+      createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
+      deletedAt: entity.deletedAt,
+    );
+  }
+
   UserEntity toEntity() => UserEntity(
         uid: uid,
         email: email,
@@ -54,4 +68,16 @@ class RemoteUserModel {
         updatedAt: updatedAt,
         deletedAt: deletedAt,
       );
+
+  Map<String, dynamic> toJson() => {
+        'uid': uid,
+        'email': email,
+        'username': username,
+        'avatar': avatar,
+        'name': name,
+        'posts': posts,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'deletedAt': deletedAt,
+      };
 }
