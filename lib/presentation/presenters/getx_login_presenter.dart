@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../domain/entities/entities.dart';
 import '../../ui/helpers/helpers.dart';
 import '../../ui/pages/pages.dart';
 import '../../domain/helpers/helpers.dart';
@@ -12,6 +13,7 @@ class GetxLoginPresenter extends GetxController
     implements LoginPresenter {
   final Validation validation;
   final UserAuthentication authentication;
+  final UserGoogleSignIn userGoogleSignIn;
   final SaveCurrentUser saveCurrentUser;
 
   final _emailError = Rx<UIError>();
@@ -26,6 +28,7 @@ class GetxLoginPresenter extends GetxController
   GetxLoginPresenter({
     required this.validation,
     required this.authentication,
+    required this.userGoogleSignIn,
     required this.saveCurrentUser,
   });
 
@@ -58,10 +61,7 @@ class GetxLoginPresenter extends GetxController
   }
 
   void _validateForm() {
-    isFormValid = _emailError.value == null &&
-        _passwordError.value == null &&
-        _email != null &&
-        _password != null;
+    isFormValid = _emailError.value == null && _passwordError.value == null && _email != null && _password != null;
   }
 
   Future<void> auth() async {
@@ -83,6 +83,35 @@ class GetxLoginPresenter extends GetxController
           mainError = UIError.unexpected;
           break;
       }
+      isLoading = false;
+    }
+  }
+
+  Future<void> authWithGoogle() async {
+    try {
+      mainError = null;
+      isLoading = true;
+      await Future.delayed(const Duration(seconds: 2));
+      final userUID = await userGoogleSignIn.authWithGoogle(
+        GoogleSignUpParams(
+          user: UserEntity(
+            uid: '',
+            email: '',
+            username: '',
+            avatar: '',
+            name: '',
+            posts: [],
+            createdAt: DateTime.now().toIso8601String(),
+            updatedAt: DateTime.now().toIso8601String(),
+            deletedAt: '',
+          ),
+        ),
+      );
+      await saveCurrentUser.save(userUID: userUID);
+      isLoading = false;
+      navigateTo = '/home';
+    } on DomainError {
+      mainError = UIError.unexpected;
       isLoading = false;
     }
   }
