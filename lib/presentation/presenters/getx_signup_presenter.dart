@@ -12,9 +12,10 @@ import '../mixins/mixins.dart';
 
 class GetxSignupPresenter extends GetxController
     with LoadingManager, NavigationManager, FormManager, UIErrorManager
-    implements SignupPresenter {
+    implements SignUpPresenter {
   final Validation validation;
   final UserAuthentication userAuthentication;
+  final UserGoogleSignIn userGoogleSignIn;
   final UserSignUp userSignUp;
   final SaveCurrentUser saveCurrentUser;
 
@@ -36,6 +37,7 @@ class GetxSignupPresenter extends GetxController
   GetxSignupPresenter({
     required this.validation,
     required this.userAuthentication,
+    required this.userGoogleSignIn,
     required this.userSignUp,
     required this.saveCurrentUser,
   });
@@ -127,6 +129,35 @@ class GetxSignupPresenter extends GetxController
           mainError = UIError.unexpected;
           break;
       }
+      isLoading = false;
+    }
+  }
+
+  Future<void> authWithGoogle() async {
+    try {
+      mainError = null;
+      isLoading = true;
+      await Future.delayed(const Duration(seconds: 2));
+      final userUID = await userGoogleSignIn.authWithGoogle(
+        GoogleSignUpParams(
+          user: UserEntity(
+            uid: '',
+            email: '',
+            username: '',
+            avatar: '',
+            name: '',
+            posts: [],
+            createdAt: DateTime.now().toIso8601String(),
+            updatedAt: DateTime.now().toIso8601String(),
+            deletedAt: '',
+          ),
+        ),
+      );
+      await saveCurrentUser.save(userUID: userUID);
+      isLoading = false;
+      navigateTo = '/home';
+    } on DomainError {
+      mainError = UIError.unexpected;
       isLoading = false;
     }
   }
