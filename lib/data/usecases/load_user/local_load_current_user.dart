@@ -18,6 +18,8 @@ class LocalLoadCurrentUser implements LoadCurrentUser {
         avatar: '',
         name: '',
         posts: [],
+        followers: [],
+        following: [],
         createdAt: '',
         updatedAt: '',
         deletedAt: '',
