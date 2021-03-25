@@ -35,7 +35,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 64,
+      height: 56,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -49,6 +49,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(

@@ -14,7 +14,7 @@ class Stories extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(24.0),
+          bottom: Radius.circular(16.0),
         ),
         boxShadow: [
           BoxShadow(

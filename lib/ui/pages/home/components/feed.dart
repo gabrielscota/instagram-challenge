@@ -14,7 +14,7 @@ class Feed extends StatelessWidget {
       controller: scrollController,
       physics: BouncingScrollPhysics(),
       child: Padding(
-        padding: const EdgeInsets.only(top: 64.0),
+        padding: const EdgeInsets.only(top: 48.0),
         child: Column(
           children: [
             Stories(),
@@ -26,7 +26,7 @@ class Feed extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
             ),
-            Container(height: 110.0, color: Theme.of(context).backgroundColor),
+            Container(height: 80.0, color: Theme.of(context).backgroundColor),
           ],
         ),
       ),

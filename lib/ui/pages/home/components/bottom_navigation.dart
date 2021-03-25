@@ -14,12 +14,12 @@ class BottomNavigation extends StatelessWidget {
       right: 0,
       bottom: 0,
       child: Container(
-        height: 80,
+        height: 64,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(24.0)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
           color: Theme.of(context).primaryColor,
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
