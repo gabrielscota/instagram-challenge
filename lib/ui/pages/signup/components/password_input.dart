@@ -7,7 +7,7 @@ import '../signup.dart';
 class PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<SignupPresenter>(context);
+    final presenter = Provider.of<SignUpPresenter>(context);
 
     return StreamBuilder<UIError?>(
       stream: presenter.passwordErrorStream,

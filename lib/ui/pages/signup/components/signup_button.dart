@@ -9,7 +9,7 @@ import '../signup.dart';
 class SignUpButton extends StatelessWidget with KeyboardManager {
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<SignupPresenter>(context);
+    final presenter = Provider.of<SignUpPresenter>(context);
 
     return Container(
       height: 52,

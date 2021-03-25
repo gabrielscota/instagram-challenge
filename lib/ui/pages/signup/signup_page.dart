@@ -8,7 +8,7 @@ import '../pages.dart';
 import 'components/components.dart';
 
 class SignupPage extends StatelessWidget with KeyboardManager, UIErrorManager, NavigationManager {
-  final SignupPresenter presenter;
+  final SignUpPresenter presenter;
 
   SignupPage({required this.presenter});
 
@@ -22,7 +22,7 @@ class SignupPage extends StatelessWidget with KeyboardManager, UIErrorManager, N
 
           return GestureDetector(
             onTap: () => hideKeyboard(context),
-            child: Provider<SignupPresenter>(
+            child: Provider<SignUpPresenter>(
               create: (_) => presenter,
               child: Form(
                 child: SingleChildScrollView(
@@ -48,7 +48,7 @@ class SignupPage extends StatelessWidget with KeyboardManager, UIErrorManager, N
                               const SizedBox(height: 24.0),
                               FacebookLoginButton(),
                               const SizedBox(height: 12.0),
-                              GoogleLoginButton(),
+                              GoogleLoginButton(presenter: presenter),
                               const SizedBox(height: 20.0),
                               Row(
                                 children: [
