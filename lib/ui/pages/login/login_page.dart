@@ -46,8 +46,8 @@ class LoginPage extends StatelessWidget with KeyboardManager, UIErrorManager, Na
                                 height: 80.0,
                               ),
                               const SizedBox(height: 24.0),
-                              FacebookLoginButton(),
-                              const SizedBox(height: 12.0),
+                              // FacebookLoginButton(presenter: presenter),
+                              // const SizedBox(height: 12.0),
                               GoogleLoginButton(presenter: presenter),
                               const SizedBox(height: 20.0),
                               Row(

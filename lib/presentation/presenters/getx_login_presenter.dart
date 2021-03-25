@@ -14,6 +14,7 @@ class GetxLoginPresenter extends GetxController
   final Validation validation;
   final UserAuthentication authentication;
   final UserGoogleSignIn userGoogleSignIn;
+  final UserFacebookSignIn userFacebookSignIn;
   final SaveCurrentUser saveCurrentUser;
 
   final _emailError = Rx<UIError>();
@@ -29,6 +30,7 @@ class GetxLoginPresenter extends GetxController
     required this.validation,
     required this.authentication,
     required this.userGoogleSignIn,
+    required this.userFacebookSignIn,
     required this.saveCurrentUser,
   });
 
@@ -94,6 +96,35 @@ class GetxLoginPresenter extends GetxController
       await Future.delayed(const Duration(seconds: 2));
       final userUID = await userGoogleSignIn.authWithGoogle(
         GoogleSignUpParams(
+          user: UserEntity(
+            uid: '',
+            email: '',
+            username: '',
+            avatar: '',
+            name: '',
+            posts: [],
+            createdAt: DateTime.now().toIso8601String(),
+            updatedAt: DateTime.now().toIso8601String(),
+            deletedAt: '',
+          ),
+        ),
+      );
+      await saveCurrentUser.save(userUID: userUID);
+      isLoading = false;
+      navigateTo = '/home';
+    } on DomainError {
+      mainError = UIError.unexpected;
+      isLoading = false;
+    }
+  }
+
+  Future<void> authWithFacebook() async {
+    try {
+      mainError = null;
+      isLoading = true;
+      await Future.delayed(const Duration(seconds: 2));
+      final userUID = await userFacebookSignIn.authWithFacebook(
+        FacebookSignUpParams(
           user: UserEntity(
             uid: '',
             email: '',

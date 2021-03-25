@@ -15,6 +15,7 @@ abstract class SignUpPresenter {
   void validatePassword(String password);
   void validatePasswordConfirmation(String passwordConfirmation);
   Future<void> authWithGoogle();
+  Future<void> authWithFacebook();
   Future<void> signup();
   void goToLogin();
 }

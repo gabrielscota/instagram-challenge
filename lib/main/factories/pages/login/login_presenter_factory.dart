@@ -6,5 +6,6 @@ LoginPresenter makeGetxLoginPresenter() => GetxLoginPresenter(
       validation: makeLoginValidation(),
       authentication: makeRemoteUserAuthentication(),
       userGoogleSignIn: makeRemoteUserGoogleSignIn(),
+      userFacebookSignIn: makeRemoteUserFacebookSignIn(),
       saveCurrentUser: makeLocalSaveCurrentUser(),
     );

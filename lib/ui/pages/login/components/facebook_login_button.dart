@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../pages.dart';
+
 class FacebookLoginButton extends StatelessWidget {
+  final LoginPresenter presenter;
+
+  FacebookLoginButton({required this.presenter});
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: presenter.authWithFacebook,
       style: ElevatedButton.styleFrom(
         primary: Color.fromRGBO(1, 99, 224, 1.0),
         padding: EdgeInsets.symmetric(vertical: 12.0),
