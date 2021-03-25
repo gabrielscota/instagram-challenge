@@ -116,6 +116,7 @@ class GetxSignupPresenter extends GetxController
         ),
       );
       await saveCurrentUser.save(userUID: userUID);
+      isLoading = false;
       navigateTo = '/home';
     } on DomainError catch (error) {
       switch (error) {
