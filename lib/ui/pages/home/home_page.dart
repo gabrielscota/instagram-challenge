@@ -32,24 +32,20 @@ class _HomePageState extends State<HomePage> with NavigationManager {
       body: Builder(
         builder: (context) {
           handleNavigation(widget.presenter.navigateToStream, clear: true);
-          widget.presenter.loadPostsData('zB6a2El0OfkPL2VEuH9z');
+          widget.presenter.loadUser('070SmR0SuqaI9wpCOeX8ADNLn2K3');
+          widget.presenter.loadUserFollowingPosts('070SmR0SuqaI9wpCOeX8ADNLn2K3');
 
           return PageView(
             controller: _pageController,
             pageSnapping: true,
             physics: PageScrollPhysics(),
-            onPageChanged: (value) {
-              if (value == 2) {
-                widget.presenter.loadPostsData('zB6a2El0OfkPL2VEuH9z');
-              }
-            },
             children: [
               Container(color: Colors.green),
               Provider(
                 create: (_) => widget.presenter,
                 child: Stack(
                   children: [
-                    Feed(scrollController: _scrollController),
+                    Feed(scrollController: _scrollController, presenter: widget.presenter),
                     HomeAppBar(scrollController: _scrollController),
                     BottomNavigation(),
                   ],

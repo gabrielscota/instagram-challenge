@@ -6,23 +6,26 @@ import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
 
 class GetxHomePresenter extends GetxController with NavigationManager implements HomePresenter {
-  final LoadPosts loadPosts;
+  final LoadUserFollowingPosts loadUserFollowPosts;
   final LoadUserSelf loadUserSelf;
   final DeleteCurrentUser deleteCurrentUser;
   final UserLogout userLogout;
 
   GetxHomePresenter({
-    required this.loadPosts,
+    required this.loadUserFollowPosts,
     required this.loadUserSelf,
     required this.deleteCurrentUser,
     required this.userLogout,
   });
 
   final _user = Rx<UserViewModel?>();
+  final _posts = Rx<List<PostViewModel>?>();
+
   Stream<UserViewModel?> get userStream => _user.stream;
+  Stream<List<PostViewModel>?> get postsStream => _posts.stream;
 
   @override
-  Future<void> loadPostsData(String userUID) async {
+  Future<void> loadUser(String userUID) async {
     try {
       final UserEntity user = await loadUserSelf.load(userUID);
       _user.subject.add(
@@ -33,6 +36,33 @@ class GetxHomePresenter extends GetxController with NavigationManager implements
           name: user.name,
         ),
       );
+    } catch (_) {}
+  }
+
+  @override
+  Future<void> loadUserFollowingPosts(String userUID) async {
+    try {
+      final List<PostEntity> posts = await loadUserFollowPosts.loadUserFollowingPosts(userUID);
+      _posts.subject.add(posts
+          .map((post) => PostViewModel(
+                user: UserViewModel(
+                  uid: post.user.uid,
+                  username: post.user.username,
+                  avatar: post.user.avatar,
+                  name: post.user.name,
+                ),
+                subtitle: post.subtitle,
+                imageUrl: post.imageUrl,
+                description: post.description,
+                likes: post.likes
+                    .map((userLiked) => UserLikeViewModel(
+                          username: userLiked.username,
+                          avatar: userLiked.avatar,
+                          name: userLiked.name,
+                        ))
+                    .toList(),
+              ))
+          .toList());
     } catch (_) {}
   }
 
