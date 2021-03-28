@@ -40,8 +40,10 @@ class RemoteUserModel {
       avatar: json['avatar'],
       name: json['name'],
       posts: [],
-      followers: [],
-      following: [],
+      followers:
+          json['followers'] != null ? (json['followers'] as List).map((follower) => follower as String).toList() : [],
+      following:
+          json['following'] != null ? (json['following'] as List).map((follow) => follow as String).toList() : [],
       createdAt: json['createdAt'] != null ? json['createdAt'] : '',
       updatedAt: json['updatedAt'] != null ? json['updatedAt'] : '',
       deletedAt: json['deletedAt'] != null ? json['deletedAt'] : '',
