@@ -4,25 +4,18 @@ import '../../../domain/usecases/usecases.dart';
 import '../../firebase/firebase.dart';
 import '../../models/models.dart';
 
-class RemoteLoadPosts implements LoadPosts {
+class RemoteLoadUserPosts implements LoadUserPosts {
   final CloudFirestore cloudFirestore;
 
-  RemoteLoadPosts({required this.cloudFirestore});
+  RemoteLoadUserPosts({required this.cloudFirestore});
 
   @override
-  Future<List<PostEntity>> load(String userUID) async {
+  Future<List<PostEntity>> loadUserPosts(String userUID) async {
     try {
-      final userQuerySnapshot = await cloudFirestore
-          .getCollection(collectionName: 'users')
-          .doc(userUID)
-          .get();
-      final RemoteUserModel user =
-          RemoteUserModel.fromJson(userQuerySnapshot.data()!);
-      final postsQuerySnapshots = await cloudFirestore
-          .getCollection(collectionName: 'users')
-          .doc(userUID)
-          .collection('posts')
-          .get();
+      final userQuerySnapshot = await cloudFirestore.getCollection(collectionName: 'users').doc(userUID).get();
+      final RemoteUserModel user = RemoteUserModel.fromJson(userQuerySnapshot.data()!);
+      final postsQuerySnapshots =
+          await cloudFirestore.getCollection(collectionName: 'users').doc(userUID).collection('posts').get();
       return postsQuerySnapshots.docs
           .map((post) => RemotePostModel.fromJsonWithUser(post.data()!, user).toEntity())
           .toList();
