@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../domain/entities/entities.dart';
+import '../../pages.dart';
 
-void showPostLikes(BuildContext context, List<UserLikeEntity> likes) {
+void showPostLikes(BuildContext context, List<UserLikeViewModel> likes) {
   final ScrollController scrollController = ScrollController();
   bool dispose = false;
 
@@ -45,10 +45,7 @@ void showPostLikes(BuildContext context, List<UserLikeEntity> likes) {
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Text(
                     'Curtidas',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5
-                        ?.copyWith(fontWeight: FontWeight.w500),
+                    style: Theme.of(context).textTheme.headline5?.copyWith(fontWeight: FontWeight.w500),
                   ),
                 ),
                 ListView.builder(
